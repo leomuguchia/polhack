@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ops Dashboard</title>
+    <meta http-equiv="refresh" content="2">
+
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #c7c7c7;
+            font-family: "Consolas", monospace;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        .counters {
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .counter {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 15px;
+            color: #9a9a9a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            text-align: left;
+            padding: 8px;
+            background-color: #161616;
+            border-bottom: 1px solid #222;
+            color: #bfbfbf;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        tr:hover {
+            background-color: #1a1a1a;
+        }
+
+        /* message colors — subtle, no glow */
+        .log-info {
+            color: #8fb1ff;
+        }
+
+        .log-success {
+            color: #8cff8f;
+            font-weight: bold;
+        }
+
+        .log-skipped {
+            color: #ffbb71;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ops Monitor — Vote Automation</h1>
+
+    <div class="counters">
+        <span class="counter">Logs: {{.totalVotes}}</span>
+        <span class="counter">Success: {{.totalSuccess}}</span>
+        <span class="counter">Skipped: {{.totalSkipped}}</span>
+    </div>
+
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Message</th>
+        </tr>
+        {{range .logs}}
+        <tr class="log-{{.Type}}">
+            <td>{{.Time}}</td>
+            <td>{{.Message}}</td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>
