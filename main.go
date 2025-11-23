@@ -88,11 +88,11 @@ func main() {
 
 	go voteTicker()
 
-	router.Run(":8080")
+	router.Run(":8081")
 }
 
 func voteTicker() {
-	ticker := time.NewTicker(10 * time.Second)
+	ticker := time.NewTicker(5 * time.Second)
 	defer ticker.Stop()
 	endTime := time.Now().Add(18 * time.Hour)
 
