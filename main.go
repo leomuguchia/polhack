@@ -88,15 +88,15 @@ func main() {
 
 	go voteTicker()
 
-	router.Run(":8004")
+	router.Run(":8006")
 }
 
 func voteTicker() {
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(2 * time.Second)
 	defer ticker.Stop()
 	endTime := time.Now().Add(5 * time.Hour)
 
-	const workersPerTick = 2
+	const workersPerTick = 20
 
 	for now := range ticker.C {
 		if now.After(endTime) {
