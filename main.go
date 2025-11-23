@@ -88,20 +88,24 @@ func main() {
 
 	go voteTicker()
 
-	router.Run(":8081")
+	router.Run(":9009")
 }
 
 func voteTicker() {
-	ticker := time.NewTicker(10 * time.Second)
+	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
 	endTime := time.Now().Add(18 * time.Hour)
+
+	const workersPerTick = 50
 
 	for now := range ticker.C {
 		if now.After(endTime) {
 			logMessage("Finished 18 hours of voting simulation.", "info")
 			break
 		}
-		go simulateVote()
+		for i := 0; i < workersPerTick; i++ {
+			go simulateVote()
+		}
 	}
 }
 
