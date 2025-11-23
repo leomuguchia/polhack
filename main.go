@@ -94,7 +94,7 @@ func main() {
 func voteTicker() {
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
-	endTime := time.Now().Add(18 * time.Hour)
+	endTime := time.Now().Add(1 * time.Hour)
 
 	const workersPerTick = 50
 
