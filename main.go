@@ -88,7 +88,7 @@ func main() {
 
 	go voteTicker()
 
-	router.Run(":9009")
+	router.Run(":8000")
 }
 
 func voteTicker() {
