@@ -92,7 +92,7 @@ func main() {
 }
 
 func voteTicker() {
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(10 * time.Second)
 	defer ticker.Stop()
 	endTime := time.Now().Add(18 * time.Hour)
 
